@@ -21,6 +21,32 @@
             {{ snippet|pygmentify_inline }}
             <br />
             <h3>the "pygment" tag</h3>
+            {% pygment %}
+                            <pre lang="bash">
+stefan$ ./manage.py runserver_cp
+Validating models...
+0 errors found
+starting server with options {'ssl_certificate': None, 'workdir': None, 'verbose': 1, 'server_name': 'localhost', 'host': 'localhost', 'daemonize': 0, 'threads': 10, 'pidfile': None, 'shutdown_timeout': 60, 'ssl_private_key': None, 'server_group': 'www-data', 'port': 8000, 'server_user': 'www-data', 'request_queue_size': 5}
+
+Django version 1.2.1 SVN-13353, using settings 'proj.settings'
+Development server is running at http://localhost:8000/
+Quit the server with &lt;CTRL&gt;+C.
+[01/Aug/2010 17:34:39] "GET /labs/ HTTP/1.1" 200
+[01/Aug/2010 17:34:39] "GET /media/css/style.css HTTP/1.1" 304
+[01/Aug/2010 17:34:39] "GET /media/css/pretty.photo.css HTTP/1.1" 304
+[01/Aug/2010 17:34:39] "GET /media/js/jquery.js HTTP/1.1" 304
+[01/Aug/2010 17:34:39] "GET /media/app/labs/css/labs.css HTTP/1.1" 200
+[01/Aug/2010 17:34:39] "GET /media/css/main.css HTTP/1.1" 304
+[01/Aug/2010 17:34:39] "GET /media/js/main.js HTTP/1.1" 304
+[01/Aug/2010 17:34:39] "GET /media/js/custom.js HTTP/1.1" 304
+                            </pre>
+                <br />
+                {{ snippet|safe }}
+            {% endpygment %}
+            <br />
+            <h3>the "pygment" tag with arguments</h3>
+            (the args will be passed to the HtmlFormatter class)
+            <br />
             <!-- lineseparator="<br/><br/>" will be passed as keyword
                  argument to the HtmlFormatter class -->
             {% pygment lineseparator="<br/><br/>" %}
