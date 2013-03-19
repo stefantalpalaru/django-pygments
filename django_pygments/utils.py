@@ -4,7 +4,6 @@ from pygments.lexers import LEXERS, get_lexer_by_name
 warnings.resetwarnings()
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
-from pprint import pprint
 import re
 from django.utils.encoding import smart_unicode
 
@@ -31,7 +30,8 @@ def pygmentify_html(text, **kwargs):
     subs = []
     pre_re = re.compile(r'(<pre[^>]*>)(.*?)(</pre>)', re.DOTALL | re.UNICODE)
     br_re = re.compile(r'<br[^>]*?>', re.UNICODE)
-    lang_re = re.compile(r'lang="(.+?)"', re.DOTALL | re.UNICODE)
+    p_re = re.compile(r'<\/?p[^>]*>', re.UNICODE)
+    lang_re = re.compile(r'lang=["\'](.+?)["\']', re.DOTALL | re.UNICODE)
     for pre_match in pre_re.findall(text):
         work_area = pre_match[1]
         work_area = br_re.sub('\n', work_area)
@@ -42,6 +42,7 @@ def pygmentify_html(text, **kwargs):
                 lang = default_lang
         lexer = get_lexer_by_name(lang, stripall=True)
         work_area = work_area.replace(u'&nbsp;', u' ').replace(u'&amp;', u'&').replace(u'&lt;', u'<').replace(u'&gt;', u'>').replace(u'&quot;', u'"').replace(u'&#39;', u"'")
+        work_area=re.sub(p_re, '', work_area)
         work_area = highlight(work_area, lexer, formatter)
         subs.append([u''.join(pre_match), smart_unicode(work_area)])
     for sub in subs:
