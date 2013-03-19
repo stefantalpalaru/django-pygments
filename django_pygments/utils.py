@@ -42,7 +42,7 @@ def pygmentify_html(text, **kwargs):
                 lang = default_lang
         lexer = get_lexer_by_name(lang, stripall=True)
         work_area = work_area.replace(u'&nbsp;', u' ').replace(u'&amp;', u'&').replace(u'&lt;', u'<').replace(u'&gt;', u'>').replace(u'&quot;', u'"').replace(u'&#39;', u"'")
-        work_area=re.sub(p_re, '', work_area)
+        work_area = p_re.sub('', work_area)
         work_area = highlight(work_area, lexer, formatter)
         subs.append([u''.join(pre_match), smart_unicode(work_area)])
     for sub in subs:
