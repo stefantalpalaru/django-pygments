@@ -2,12 +2,13 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 {% load pygmentify %}
+{% load staticfiles %}
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
         <title>django-pygments demo</title>
-        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}app/django_pygments/css/pygments_default.css" />
-        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}app/django_pygments/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/demo.css' %}" />
     </head>
 
     <body>
