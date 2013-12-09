@@ -10,9 +10,9 @@ register = template.Library()
 def pygmentify(value):
     try:
         res = pygmentify_html(value)
-    except Exception, e:
-        print e
-        print u'value="%s"' % value
+    except Exception as e:
+        print(e)
+        print(u'value="%s"' % value)
         res = value
     return mark_safe(res)
 
@@ -21,9 +21,9 @@ def pygmentify(value):
 def pygmentify_inline(value):
     try:
         res = pygmentify_html(value, noclasses=True)
-    except Exception, e:
-        print e
-        print u'value="%s"' % value
+    except Exception as e:
+        print(e)
+        print(u'value="%s"' % value)
         res = value
     return mark_safe(res)
 
@@ -36,9 +36,9 @@ class PygmentifyNode(template.Node):
         output = self.nodelist.render(context)
         try:
             res = pygmentify_html(output, **self.kwargs)
-        except Exception, e:
-            print e
-            print u'value="%s"' % output
+        except Exception as e:
+            print(e)
+            print(u'value="%s"' % output)
             res = output
         return mark_safe(res)
 
