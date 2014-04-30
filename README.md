@@ -1,6 +1,6 @@
 ##description
 
-django-pygments is a Django app that provides a template tag and 2 filters for doing syntax highlighting with Pygments ( http://pygments.org/ ).
+django-pygments is a Django app that provides a template tag and 2 filters for doing syntax highlighting with [Pygments][1].
 
 ##dependencies:
 
