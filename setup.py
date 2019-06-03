@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 from setuptools import setup, find_packages
 
@@ -11,7 +13,8 @@ setup(
         description='A django app that provides a template tag and 2 filters for \
                 doing syntax highlighting with Pygments',
         long_description=readme,
-        author='Stefan Talpalaru',
+        long_description_content_type="text/markdown",
+        author='Ștefan Talpalaru',
         author_email='developers@od-eon.com',
         url='http://github.com/odeoncg/django-pygments/tree/master',
         packages=find_packages(),
