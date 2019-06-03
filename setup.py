@@ -1,13 +1,13 @@
 import os
 from setuptools import setup, find_packages
 
-f = open(os.path.join(os.path.dirname(__file__), 'README'))
+f = open(os.path.join(os.path.dirname(__file__), 'README.md'))
 readme = f.read()
 f.close()
 
 setup(
         name='django-pygments',
-        version='0.4',
+        version='0.3',
         description='A django app that provides a template tag and 2 filters for \
                 doing syntax highlighting with Pygments',
         long_description=readme,
