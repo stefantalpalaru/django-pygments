@@ -5,8 +5,12 @@ warnings.resetwarnings()
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 import re
-from django.utils.encoding import smart_text
+try:
+    from django.utils.encoding import smart_str as smart_text
+except ImportError:
+    from django.utils.encoding import smart_text
 from functools import reduce
+
 
 class ListHtmlFormatter(HtmlFormatter):
     def wrap(self, source, outfile):
@@ -20,6 +24,7 @@ class ListHtmlFormatter(HtmlFormatter):
                 t = '<li><div class="line">%s</div></li>' % t
             yield i, t
         yield 0, '</ol>'
+
 
 def pygmentify_html(text, **kwargs):
     text = smart_text(text)
@@ -53,5 +58,3 @@ def pygmentify_html(text, **kwargs):
     for sub in subs:
         text = text.replace(sub[0], sub[1], 1)
     return text
-
-
