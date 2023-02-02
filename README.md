@@ -11,6 +11,10 @@ django-pygments is a Django app that provides a template tag and two filters for
 - add django\_pygments to your project directory and to INSTALLED\_APPS in your settings.py
 - if you want to see the integrated demo page, add a urls.py entry and copy/link the media files in the proper dir
 
+The project is also available on PyPI:
+
+`pip install django-pygments`
+
 ## usage
 
 - enclose your code snippet in a pre tag with the non-standard "lang" attribute set to a supported language like this:
