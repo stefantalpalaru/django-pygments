@@ -10,13 +10,13 @@ f.close()
 setup(
         name='django-pygments',
         version='0.6',
-        description='A django app that provides a template tag and 2 filters for \
+        description='Django app that provides a template tag and 2 filters for \
                 doing syntax highlighting with Pygments',
         long_description=readme,
         long_description_content_type="text/markdown",
         author='Ștefan Talpalaru',
-        author_email='developers@od-eon.com',
-        url='http://github.com/odeoncg/django-pygments/tree/master',
+        author_email='stefantalpalaru@yahoo.com',
+        url='http://github.com/stefantalpalaru/django-pygments',
         packages=find_packages(),
         include_package_data=True,
         install_requires=['pygments'],
