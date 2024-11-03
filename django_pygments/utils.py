@@ -1,19 +1,20 @@
 import warnings
 warnings.simplefilter('ignore')
+import re
+from functools import reduce
+
 from pygments.lexers import LEXERS, get_lexer_by_name
 warnings.resetwarnings()
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
-import re
 try:
     from django.utils.encoding import smart_str as smart_text
 except ImportError:
     from django.utils.encoding import smart_text
-from functools import reduce
 
 
 class ListHtmlFormatter(HtmlFormatter):
-    def wrap(self, source, outfile):
+    def wrap(self, source):
         return self._wrap_div(self._wrap_pre(self._wrap_list(source)))
 
     def _wrap_list(self, source):
