@@ -37,7 +37,10 @@ def pygmentify_html(text, **kwargs):
         lexers_iter = LEXERS.values()
     lexer_names = reduce(lambda a,b: a + b[2], lexers_iter, ())
     # custom formatter
-    formatter = ListHtmlFormatter(encoding='utf-8', **kwargs)
+    if 'linenos' in kwargs:
+        formatter = HtmlFormatter(encoding='utf-8', **kwargs)
+    else:
+        formatter = ListHtmlFormatter(encoding='utf-8', **kwargs)
     subs = []
     pre_re = re.compile(r'(<pre[^>]*>)(.*?)(</pre>)', re.DOTALL | re.UNICODE)
     br_re = re.compile(r'<br[^>]*?>', re.UNICODE)
@@ -52,7 +55,14 @@ def pygmentify_html(text, **kwargs):
             if lang not in lexer_names:
                 lang = default_lang
         lexer = get_lexer_by_name(lang, stripall=True)
-        work_area = work_area.replace(u'&nbsp;', u' ').replace(u'&amp;', u'&').replace(u'&lt;', u'<').replace(u'&gt;', u'>').replace(u'&quot;', u'"').replace(u'&#39;', u"'")
+        work_area = work_area \
+            .replace(u'&nbsp;', u' ') \
+            .replace(u'&amp;', u'&') \
+            .replace(u'&lt;', u'<') \
+            .replace(u'&gt;', u'>') \
+            .replace(u'&quot;', u'"') \
+            .replace(u'&#39;', u"'") \
+            .replace(u'&#x27;', u"'")
         work_area = p_re.sub('', work_area)
         work_area = highlight(work_area, lexer, formatter)
         subs.append([u''.join(pre_match), smart_text(work_area)])

@@ -11,8 +11,8 @@ filters for doing syntax highlighting with [Pygments][1].
 
 - Add "django\_pygments" to your project directory and to INSTALLED\_APPS
   in your "settings.py",
-- If you want to see the integrated demo page, add a "urls.py" entry and
-  copy/link the media files in the proper dir.
+- If you want to see the integrated demo page, add a "urls.py" entry for
+  "django\_pygments.views.demo".
 
 The project is also available on PyPI:
 
@@ -26,8 +26,10 @@ The project is also available on PyPI:
 <pre lang="python">....</pre>
 ```
 - See the view and demo template for examples on how to use the
-  "pygmentify" and "pygmentify\_inline" filters (the later is rather
-  useful for RSS feeds) or the "pygment" tag.
+  "pygmentify" and "pygmentify\_inline" filters (the latter is rather
+  useful for RSS feeds, because it inlines CSS styles by passing
+  `noclasses=True` to `pygments.formatters.HtmlFormatter`) or the
+  "pygment" tag.
 - While using the "pygment" template tag, you can pass keyword arguments
   that you would pass to Pygments HtmlFormatter class constructor by
   passing them as with keyword arguments along with the pygment tag. Look
@@ -35,6 +37,14 @@ The project is also available on PyPI:
   still. You can only pass Python values as argument values (like strings
   wrapped within quotes or True or False boolean values, etc.). It doesn't
   support Django template/context variables as arguments yet.
+
+  E.g: to disable line numbering, use:
+
+```htmldjango
+{% pygment linenos=False %}
+    <pre lang="python">...</pre>
+{% endpygment %}
+```
 
 ## notes
 

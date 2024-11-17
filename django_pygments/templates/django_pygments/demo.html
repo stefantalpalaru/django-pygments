@@ -45,8 +45,14 @@ Quit the server with &lt;CTRL&gt;+C.
             {% endpygment %}
             <br />
             <h3>the "pygment" tag with arguments</h3>
-            (the args will be passed to the HtmlFormatter class)
+            (args will be passed to the HtmlFormatter class)
             <br />
+            {% pygment linenos=False %}
+                <pre lang="htmldjango">
+<!-- lineseparator="&lt;br/&gt;&lt;br/&gt;" will be passed as keyword argument to the HtmlFormatter class -->
+{% verbatim %}{% pygment lineseparator="&lt;br/&gt;&lt;br/&gt;" %}{% endverbatim %}
+                </pre>
+            {% endpygment %}
             <!-- lineseparator="<br/><br/>" will be passed as keyword
                  argument to the HtmlFormatter class -->
             {% pygment lineseparator="<br/><br/>" %}
@@ -69,6 +75,19 @@ Quit the server with &lt;CTRL&gt;+C.
 [01/Aug/2010 17:34:39] "GET /media/js/custom.js HTTP/1.1" 304
                             </pre>
                 <br />
+                {{ snippet|safe }}
+            {% endpygment %}
+
+            <h3>Disabling line numbers</h3>
+            We enable line numbers by default, unlike Pygments, but you can easily disable that:
+            <br />
+            <br />
+            {% pygment linenos=False %}
+                <pre lang="htmldjango">
+{% verbatim %}{% pygment linenos=False %}{% endverbatim %}
+                </pre>
+            {% endpygment %}
+            {% pygment linenos=False %}
                 {{ snippet|safe }}
             {% endpygment %}
         </div>
