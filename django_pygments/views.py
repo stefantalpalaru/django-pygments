@@ -1,5 +1,5 @@
 # vim: set fileencoding=utf-8 :
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import RequestContext
 from django.utils.html import escape
@@ -23,5 +23,5 @@ class ListHtmlFormatter(HtmlFormatter):
     # a unicode comment: âăşţîÂĂŞŢÎ èéòçàù
     """
     snippet = '<pre lang="python">' + escape(raw_snippet) + '</pre>'
-    return render_to_response('django_pygments/demo.html', locals(), context_instance = RequestContext(request))
+    return render(request, 'django_pygments/demo.html', locals())
 
