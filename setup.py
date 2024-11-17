@@ -9,7 +9,7 @@ f.close()
 
 setup(
         name='django-pygments',
-        version='0.7',
+        version='0.8',
         description='Django app that provides a template tag and 2 filters for \
                 doing syntax highlighting with Pygments',
         long_description=readme,
