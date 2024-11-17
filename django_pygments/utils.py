@@ -1,10 +1,7 @@
-import warnings
-warnings.simplefilter('ignore')
 import re
 from functools import reduce
 
 from pygments.lexers import LEXERS, get_lexer_by_name
-warnings.resetwarnings()
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 try:
