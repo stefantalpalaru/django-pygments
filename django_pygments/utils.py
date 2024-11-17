@@ -15,7 +15,7 @@ except ImportError:
 
 class ListHtmlFormatter(HtmlFormatter):
     def wrap(self, source):
-        return self._wrap_div(self._wrap_pre(self._wrap_list(source)))
+        return self._wrap_pre(self._wrap_list(source))
 
     def _wrap_list(self, source):
         yield 0, '<ol>'
